@@ -1,7 +1,7 @@
 name: Check and deploy Pages
 on:
   push:
-    branches: [main]
+    branches: [main, "quality/**"]
   pull_request:
   workflow_dispatch:
 permissions:
@@ -20,6 +20,8 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run check:contrast
+      - run: npx playwright install --with-deps chromium
+      - run: npm run test:browser
       - run: npm run build
       - uses: actions/upload-pages-artifact@v3
         if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'

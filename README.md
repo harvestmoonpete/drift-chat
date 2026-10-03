@@ -51,3 +51,7 @@ Run `npm run check:contrast` to verify the actual CSS color tokens. This focused
 ## Deployment
 
 GitHub Actions installs the locked dependencies, checks color contrast, and type-checks and builds the app. Successful checks on `main` deploy the static build to GitHub Pages. Pull requests run checks without deploying. The public demo contains only synthetic browser-side conversations and makes no backend chat requests.
+
+### Browser regression checks
+
+Run `npx playwright install chromium` once, then `npm run test:browser`. CI runs the suite before Pages deployment. Chromium checks desktop and mobile layouts under `/drift-chat/`: keyboard sending, blank input, literal markup, simulated replies, command navigation, draft and DM isolation, room creation/reset, search, and reactions. Axe checks the landing screen and command palette for WCAG A/AA violations; automated checks do not replace a full accessibility audit.
