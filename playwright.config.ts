@@ -11,7 +11,7 @@ export default defineConfig({
     { name: 'mobile', use: { viewport: { width: 390, height: 844 } } },
   ],
   webServer: {
-    command: 'npm run build -- --base=/drift-chat/ && npx vite preview --host 127.0.0.1 --port 5194 --strictPort',
+    command: 'npm run build -- --base=/drift-chat/ && npx vite preview --base=/drift-chat/ --host 127.0.0.1 --port 5194 --strictPort',
     url: 'http://127.0.0.1:5194/drift-chat/',
     reuseExistingServer: false,
   },
